@@ -36,6 +36,8 @@ namespace Form_Test
 
                     testButton.Text = "AAAAA";
 
+                    testButton.MouseHover += hogehogeClick;
+                 
                 }
             }
 
@@ -48,6 +50,10 @@ namespace Form_Test
             MessageBox.Show("c#の世界へようこそ!");
         }
 
+        private void hogehogeClick(object sender,EventArgs e)
+        {
+            MessageBox.Show("aaaaaaa");
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("C#の世界");
