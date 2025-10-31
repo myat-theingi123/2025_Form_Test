@@ -12,18 +12,31 @@ using System.Windows.Forms;
 namespace Form_Test
 {
     public partial class Form1 : Form
-    {
+{
+
+        const int BUTTON_SIZE_X = 100;
+        const int BUTTON_SIZE_Y = 100;
+
+        const int BOARD_SIZE_X = 3;
+        const int BOARD_SIZE_Y = 3;
+
+        private TestButton[,] buttonArray;
         public Form1()
-        {
+        { 
             InitializeComponent();
+            buttonArray= new TestButton[BOARD_SIZE_Y, BOARD_SIZE_X];
 
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < BOARD_SIZE_X; i++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < BOARD_SIZE_Y; j++)
                 {
                     // インスタンスの生成
-                    TestButton testButton = new TestButton(new Point(50 * i, 50 * j), new Size(50, 50), "a");
+                    TestButton testButton =
+                    new TestButton(new Point(BUTTON_SIZE_X * i, BUTTON_SIZE_Y * j)
+                        ,new Size(BUTTON_SIZE_X, BUTTON_SIZE_Y), "A");
+
+                    buttonArray[j, i] = testButton;
 
                     // ボタンの位置を設定
 
@@ -42,7 +55,11 @@ namespace Form_Test
                     Controls.Add(testButton);
                 }
             }
+
+            buttonArray[0,1].SetEnable(true);
+           
         }
+        
 
 
 
