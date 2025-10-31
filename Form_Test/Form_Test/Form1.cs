@@ -18,45 +18,38 @@ namespace Form_Test
             InitializeComponent();
 
 
-            for (int i = 0; i < 6; i++)
-
-
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < 4; j++)
+                for (int j = 0; j < 3; j++)
                 {
+                    // インスタンスの生成
+                    TestButton testButton = new TestButton(new Point(50 * i, 50 * j), new Size(50, 50), "a");
+
+                    // ボタンの位置を設定
 
 
-                    TestButton testButton = new TestButton();
+                    // ボタンの大きさを設定
 
+
+                    // ボタン内のテキストを設定
+
+
+                    // Click Eventに　hogehogeClick関数を登録
+
+
+
+                    // コントロールにボタンを追加
                     Controls.Add(testButton);
-
-                    testButton.Location = new Point(50 * i, j * 50);
-
-                    testButton.Size = new Size( 50 ,30 );
-
-                    testButton.Text = "AAAAA";
-
-                    testButton.MouseHover += hogehogeClick;
-                 
                 }
             }
-
-
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-            MessageBox.Show("c#の世界へようこそ!");
-        }
 
-        private void hogehogeClick(object sender,EventArgs e)
-        {
-            MessageBox.Show("aaaaaaa");
-        }
+        // 自動生成
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("C#の世界");
+            MessageBox.Show("クリック");
         }
     }
 }
