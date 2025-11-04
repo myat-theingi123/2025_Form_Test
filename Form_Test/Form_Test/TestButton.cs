@@ -37,15 +37,24 @@ namespace Form_Test
             }
         }
 
+        public void Toggle()
+        {
+            SetEnable(!_enable);
+        }
+
+
+
+
+
         public TestButton(Form1 form1,int x,int y,Point position, Size size, string texr)
         {
             _form1 = form1;
 
             _x = x;
             _y = y;
-            
 
-            Location = position;
+
+            Location = new Point(x * size.Width, y * size.Height);
             Size = size;
             Text = Text;
 
@@ -57,7 +66,7 @@ namespace Form_Test
         // 自分で作成することも可能
         private void ClickEvent(object sender, EventArgs e)
         {
-            _form1.GetTestButton(_x, _y).SetEnable(true);
+            _form1.GetTestButton(_x, _y).Toggle() ;
         }
 
     }
