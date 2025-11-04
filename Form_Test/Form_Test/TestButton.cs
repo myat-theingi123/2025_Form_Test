@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,11 +9,18 @@ using System.Windows.Forms;
 
 namespace Form_Test
 {
-    internal class TestButton:Button
+    public class TestButton:Button
     {
         private Color _onColor = Color.Black;
         private Color _offColor = Color.Violet;
         private bool _enable;
+
+        private Form1 _form1;
+
+        private int _x;
+
+        private int _y;
+
 
 
         public void SetEnable(bool on)
@@ -29,8 +37,14 @@ namespace Form_Test
             }
         }
 
-        public TestButton(Point position, Size size, string texr)
+        public TestButton(Form1 form1,int x,int y,Point position, Size size, string texr)
         {
+            _form1 = form1;
+
+            _x = x;
+            _y = y;
+            
+
             Location = position;
             Size = size;
             Text = Text;
@@ -43,7 +57,7 @@ namespace Form_Test
         // 自分で作成することも可能
         private void ClickEvent(object sender, EventArgs e)
         {
-            SetEnable(!_enable);
+            _form1.GetTestButton(_x, _y).SetEnable(true);
         }
 
     }

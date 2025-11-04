@@ -21,6 +21,7 @@ namespace Form_Test
         const int BOARD_SIZE_Y = 3;
 
         private TestButton[,] buttonArray;
+
         public Form1()
         { 
             InitializeComponent();
@@ -33,7 +34,9 @@ namespace Form_Test
                 {
                     // インスタンスの生成
                     TestButton testButton =
-                    new TestButton(new Point(BUTTON_SIZE_X * i, BUTTON_SIZE_Y * j)
+                    new TestButton(this,
+                        i,j,
+                        new Point(BUTTON_SIZE_X * i, BUTTON_SIZE_Y * j)
                         ,new Size(BUTTON_SIZE_X, BUTTON_SIZE_Y), "A");
 
                     buttonArray[j, i] = testButton;
@@ -56,8 +59,12 @@ namespace Form_Test
                 }
             }
 
-            buttonArray[0,1].SetEnable(true);
            
+           
+        }
+        public TestButton GetTestButton(int x, int y)
+        {
+            return buttonArray[y, x];
         }
         
 
