@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Form_Test
 {
-    public class TestButton:Button
+    public class TestButton : Button
     {
         private Color _onColor = Color.Black;
         private Color _offColor = Color.Violet;
@@ -26,8 +26,8 @@ namespace Form_Test
         public void SetEnable(bool on)
         {
             _enable = on;
-            
-            if(on)
+
+            if (on)
             {
                 BackColor = _onColor;
             }
@@ -46,7 +46,8 @@ namespace Form_Test
 
 
 
-        public TestButton(Form1 form1,int x,int y,Point position, Size size, string texr)
+
+        public TestButton(Form1 form1, int x, int y, Point position, Size size, string texr)
         {
             _form1 = form1;
 
@@ -66,8 +67,37 @@ namespace Form_Test
         // 自分で作成することも可能
         private void ClickEvent(object sender, EventArgs e)
         {
-            _form1.GetTestButton(_x, _y).Toggle() ;
+            //_form1.GetTestButton(_x, _y)?.Toggle();
+            //_form1.GetTestButton(_x + 1, _y)?.Toggle();
+            //_form1.GetTestButton(_x - 1, _y)?.Toggle();
+            //_form1.GetTestButton(_x, _y + 1)?.Toggle();
+            //_form1.GetTestButton(_x, _y - 1)?.Toggle();
+
+            for (int i = 0; i < _toggleData.Length; i++)
+            {
+                var data = _toggleData[i];
+                var button = _form1.GetTestButton(_x + data[0], _y + data[1]);
+
+                if (button != null)
+                {
+                    button.Toggle();
+                }
+            }
         }
+
+
+        private int[][] _toggleData =
+        {
+            
+
+             new int[] {0 ,0},
+             new int[] {1 ,0},
+             new int[] { -1, 0 },
+             new int[] { 0, 1 },
+             new int[] {0,-1},
+              
+             
+        };
 
     }
 }
